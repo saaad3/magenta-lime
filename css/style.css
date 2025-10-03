@@ -1,147 +1,97 @@
 
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer reset {
 
-/* Prevent font size inflation */
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
+  /*
+    Based on the modified version of Andy Bell's: A (more) Modern CSS Reset
+    https: //piccalil.li/blog/a-more-modern-css-reset/
+  */
 
-/* Remove default margin in favour of better control in authored CSS */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin-block-end: 0;
-}
+  /* Box sizing rules */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
-}
+  /* 
+    Prevents font size inflation / font boosting
+    Webkit bug (solved now) used to prevent people from zooming the page if it was set to none 
+    instead of 100%. Likely why Normalize went for 100% & it’s not currently a concern anymore.
+    https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
+  */
+  html {
+    -moz-text-size-adjust: none; /* for Firefox on Android */
+    -webkit-text-size-adjust: none; /* for Safari, which only supports it */
+    text-size-adjust: none; /* Standard CSS property and for browsers that adheres to the current web standard */
+  }
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  line-height: 1.5;
-}
+  /* Remove default margin in favour of better control in authored CSS */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
 
-/* Set shorter line heights on headings and interactive elements */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
-}
+  /*
+    Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed
+    https: //www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+  */
+  [role='list'] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
+  /* Set core body defaults */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+  }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-}
+  /* Set shorter line heights on headings and interactive elements */
+  h1,
+  h2,
+  h3,
+  h4,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
 
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
+  /* Balance text wrapping on headings */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font-family: inherit;
-  font-size: inherit;
-}
+    p,
+    li {
+      text-wrap: pretty;
+    }
 
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
 
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:root {
-  /* colors */
-  --lime: #a4ffa2;
-  --magenta: #f47dda;
-  --magenta50: #f47dda80;
-  --white: #ffffff;
-  --tan: #cec5b4;
-  --teal: #2e6d81;
-  --cyan: #7de6f4;
-  --black: #050d14;
-  --shadow: #050d1480;
-  /* fonts */
-  --sans-serif: "Poppins", sans-serif;
-}
-
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-body {
-  font-family: var(--sans-serif);
-  font-weight: 300;
-  line-height: 1.75;
-  background-color: var(--teal);
-  color: var(--white);
-  font-size: var(--base-size);
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  max-width: 100%;
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
 }
