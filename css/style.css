@@ -3,19 +3,22 @@
 
   /*
     Based on the modified version of Andy Bell's: A (more) Modern CSS Reset
-    https: //piccalil.li/blog/a-more-modern-css-reset/
+    https://piccalil.li/blog/a-more-modern-css-reset/
   */
 
   /* Box sizing rules */
+  html {
+    box-sizing: border-box;
+  }
   *,
   *::before,
   *::after {
-    box-sizing: border-box;
+    box-sizing: inherit;
   }
 
   /* 
     Prevents font size inflation / font boosting
-    Webkit bug (solved now) used to prevent people from zooming the page if it was set to none 
+    Webkit bug (solved now) used to prevent zooming the page if value was set to none 
     instead of 100%. Likely why Normalize went for 100% & it’s not currently a concern anymore.
     https://kilianvalkhof.com/2022/css-html/your-css-reset-needs-text-size-adjust-probably/
   */
@@ -39,20 +42,22 @@
     margin: 0;
   }
 
+  /* Set core body defaults */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
   /*
-    Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed
-    https: //www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+    By default Safari removes the sementics of a list if list-style: none
+    Use ARIA role="list" attribute on lists to reasserts the semantic meaning of a list.
+    It tells browsers it's definitely a list, even if I style it to look like it isn't.
+    As the list role is explicitly declared via the ARIA attribute, Safari's historical bug/behavior of stripping the semantics upon seeing list-style: none is overridden.  
   */
   [role='list'] {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-
-  /* Set core body defaults */
-  body {
-    min-height: 100vh;
-    line-height: 1.5;
   }
 
   /* Set shorter line heights on headings and interactive elements */
@@ -74,10 +79,10 @@
     text-wrap: balance;
   }
 
-    p,
-    li {
-      text-wrap: pretty;
-    }
+  p,
+  li {
+    text-wrap: pretty;
+  }
 
   img,
   picture,
